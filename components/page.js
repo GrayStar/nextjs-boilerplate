@@ -31,8 +31,6 @@ export default class Page extends Component {
 
         this._handleRouteChangeStart = this._handleRouteChangeStart.bind(this);
         this._handleRouteChangeError = this._handleRouteChangeError.bind(this);
-        Router.events.on('routeChangeStart', this._handleRouteChangeStart);
-        Router.events.on('routeChangeError', this._handleRouteChangeError);
     }
 
     // Generic getInitialProps defined by Next.js,
@@ -61,7 +59,10 @@ export default class Page extends Component {
 
     // Check if Next.js's getInitialProps caught an error,
     // If so set the page's currentState to ERROR.
-    componentWillMount() {
+    componentDidMount() {
+        Router.events.on('routeChangeStart', this._handleRouteChangeStart);
+        Router.events.on('routeChangeError', this._handleRouteChangeError);
+
         if (this.props.statusCode) {
             this.setState({ currentState: this.STATES.ERROR });
         } else {
@@ -81,7 +82,7 @@ export default class Page extends Component {
     }
 
     _handleRouteChangeError(error, url) {
-        console.log('Route Change Error: ', error);
+        console.error(`Route change error for ${url}`, error);
         this.setState({ currentState: this.STATES.ERROR });
     }
 
