@@ -33,8 +33,8 @@ export default class Page extends Component {
             const initialProps = await this._getInitialProps(context);
             return initialProps;
         } catch(error) {
-            const statusCode = error.status || 404;
-            const statusText = error.message || 'Not Found';
+            const statusCode = error.statusCode || 404;
+            const statusText = error.statusText || 'Not Found';
 
             return {
                 statusCode,

@@ -7,7 +7,7 @@ const headers = { 'Content-Type': 'application/json' };
 const apiCall = {
     get: async (url) => {
         const response = await fetch(`${rootUrl}${url}`, {
-            method: 'get',
+            method: 'GET',
             headers: headers,
         });
 
@@ -15,7 +15,7 @@ const apiCall = {
     },
     post: async (url, body = {}) => {
         const response = await fetch(`${rootUrl}${url}`, {
-            method: 'post',
+            method: 'POST',
             body: JSON.stringify(body),
             headers: headers,
         });
@@ -27,8 +27,8 @@ const apiCall = {
 const resolveFetch = async (response) => {
     if (response.status >= 400) {
         throw {
-            status: response.status,
-            message: response.statusText,
+            statusCode: response.status,
+            statusText: response.statusText,
         };
     }
 
@@ -37,8 +37,8 @@ const resolveFetch = async (response) => {
         return json;
     } catch(error) {
         throw {
-            code: 500,
-            message: 'Error converting response to json',
+            statusCode: 500,
+            statusText: 'Error converting response to json',
         };
     }
 };
