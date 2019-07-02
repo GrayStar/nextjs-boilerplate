@@ -69,7 +69,7 @@ class Index extends Page {
                         <Row>
                             <Col xs={12} md={6}>
                                 <h2>Static Hashed Image</h2>
-                                <img src={ `${this.staticFilePath}${hashedImage}` } alt='Static Hashed Image'/>
+                                <img src={ hashedImage } alt='Static Hashed Image'/>
                             </Col>
                             <Col xs={12} md={6}>
                                 <h2>Static Image</h2>

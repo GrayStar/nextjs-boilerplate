@@ -26,7 +26,8 @@ module.exports = withSass({
                     loader: 'file-loader',
                     options: {
                         context: '',
-                        emitFile: true,
+                        outputPath: 'static',
+                        publicPath: '_next/static',
                         name: '[path][name].[hash].[ext]',
                     },
                 },

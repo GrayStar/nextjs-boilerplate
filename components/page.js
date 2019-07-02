@@ -21,14 +21,6 @@ export default class Page extends Component {
             currentState: this.STATES.LOADING,
         };
 
-        // Determine file path for hashed static assets
-        this.serverRuntimeConfig = getConfig().serverRuntimeConfig;
-        this.publicRuntimeConfig = getConfig().publicRuntimeConfig;
-
-        this.staticFilePath = this.serverRuntimeConfig.staticFilePath ?
-            this.serverRuntimeConfig.staticFilePath :
-            this.publicRuntimeConfig.staticFilePath;
-
         this._handleRouteChangeStart = this._handleRouteChangeStart.bind(this);
         this._handleRouteChangeError = this._handleRouteChangeError.bind(this);
     }
