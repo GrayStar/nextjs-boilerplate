@@ -14,10 +14,6 @@ module.exports = withSass({
     sassLoaderOptions: {
         includePaths: ['./'],
     },
-    cssLoaderOptions: {
-        importLoaders: 1,
-        localIdentName: '[local]', // ___[hash:base64:5]
-    },
     webpack: config => {
         config.module.rules.push({
             test: /\.(txt|jpg|png|svg)$/,

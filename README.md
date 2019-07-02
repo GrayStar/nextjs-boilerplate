@@ -92,8 +92,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 5. Imported styles can be used within the JSX templates with `<div className={ styles.name }/>`. If a class name contains a hyphen, use array notation to access the class: `<div className={ styles['class-name-here'] }/>`.
 
-6. cssModules are utilized to keep class names and animations scoped locally to each page or component. Configuration for this can be seen in `next.config.js`. More information can be found on the [cssModules github](https://github.com/css-modules/css-modules).
-
 ---
 
 ### Using Hashed Statics
