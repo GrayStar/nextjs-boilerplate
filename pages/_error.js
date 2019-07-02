@@ -25,7 +25,7 @@ export default class Error extends Component {
 
                                 <p>{
                                     this.props.statusCode
-                                    ? `An error:${ this.props.statusCode } occurred on server`
+                                    ? `${ this.props.statusCode }: ${ this.props.statusText }`
                                     : 'An error occurred on client'
                                 }</p>
 

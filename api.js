@@ -11,13 +11,7 @@ const apiCall = {
             headers: headers,
         });
 
-        try {
-            const json = await response.json();
-            return json;
-        } catch(error) {
-            console.error(`Error converting response to json in apiCall.get() for ${rootUrl}${url}`);
-            throw error;
-        }
+        return await resolveFetch(response);
     },
     post: async (url, body = {}) => {
         const response = await fetch(`${rootUrl}${url}`, {
@@ -26,14 +20,27 @@ const apiCall = {
             headers: headers,
         });
 
-        try {
-            const json = await response.json();
-            return json;
-        } catch(error) {
-            console.error(`Error converting response to json in apiCall.post() for ${rootUrl}${url}`);
-            throw error;
-        }
+        return await resolveFetch(response);
     },
+};
+
+const resolveFetch = async (response) => {
+    if (response.status >= 400) {
+        throw {
+            status: response.status,
+            message: response.statusText,
+        };
+    }
+
+    try {
+        const json = await response.json();
+        return json;
+    } catch(error) {
+        throw {
+            code: 500,
+            message: 'Error converting response to json',
+        };
+    }
 };
 
 export const getPokemonCards = async () => {

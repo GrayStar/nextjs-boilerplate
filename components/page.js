@@ -33,8 +33,8 @@ export default class Page extends Component {
             const initialProps = await this._getInitialProps(context);
             return initialProps;
         } catch(error) {
-            const statusCode = error.response.data.status || 404;
-            const statusText = error.response.data.error || 'Not Found';
+            const statusCode = error.status || 404;
+            const statusText = error.message || 'Not Found';
 
             return {
                 statusCode,
@@ -91,7 +91,7 @@ export default class Page extends Component {
     }
 
     get _errorState() {
-        return <Error statusCode={ this.props.statusCode }/>
+        return <Error statusCode={ this.props.statusCode } statusText={ this.props.statusText }/>
     }
 
     get _currentState() {
