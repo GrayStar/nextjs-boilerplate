@@ -1,9 +1,11 @@
 import { cardDetailService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
-const About = ({ card }) => {
+const About = (props) => {
+    const { card } = props;
+
     return (
-        <Page>
+        <Page initialProps={props}>
             <h1>About Page</h1>
             <h2>Name: {card.name}</h2>
             <h2>Pokemon #: {card.nationalPokedexNumber}</h2>

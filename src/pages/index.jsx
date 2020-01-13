@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { cardService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
-const Index = ({ cards }) => {
+const Index = (props) => {
     function getCardList() {
-        const cardListItems = cards.map(card => {
+        const cardListItems = props.cards.map(card => {
             return (
                 <li key={card.id}>
                     <Link href='/about/[cardId]' as={`/about/${card.id}`}>
@@ -18,7 +18,7 @@ const Index = ({ cards }) => {
     }
 
     return (
-        <Page>
+        <Page initialProps={props}>
             <h1>Index Page</h1>
             {getCardList()}
         </Page>

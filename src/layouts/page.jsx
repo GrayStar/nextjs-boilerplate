@@ -40,7 +40,7 @@ export const lifeCycleHelper = (props, componentDidMount, componentWillUnmount) 
     }, []);
 };
 
-const FunctionalPage = ({ initialProps, children }) => {
+const Page = ({ initialProps, children }) => {
     const [currentState, setCurrentState] = useState(initialProps.initialState);
 
     useEffect(() => {
@@ -96,10 +96,10 @@ const FunctionalPage = ({ initialProps, children }) => {
     );
 };
 
-FunctionalPage.defaultProps = {
+Page.defaultProps = {
     initialProps: { initialState: STATES.SUCCESS },
     children: null,
     error: null,
 };
 
-export default FunctionalPage;
+export default Page;
