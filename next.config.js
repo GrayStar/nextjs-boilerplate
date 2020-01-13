@@ -1,35 +1,13 @@
-const withSass = require('@zeit/next-sass');
+const path = require('path');
 
-module.exports = withSass({
-    serverRuntimeConfig: { // Will only be available on the server side
-        staticFilePath: '/_next/',
+module.exports = {
+    serverRuntimeConfig: { // Will only be available on the node server
     },
-    publicRuntimeConfig: { // Will be available on both server and client
-        staticFilePath: '',
-        rootUrl: process.env.API_ROOT_URL
-            ? process.env.API_ROOT_URL
-            : 'http://localhost:8080',
+    publicRuntimeConfig: { // Will be available on the node server and the client
+        rootUrl: 'https://api.pokemontcg.io',
     },
-    cssModules: true,
-    sassLoaderOptions: {
-        includePaths: ['./'],
-    },
-    webpack: config => {
-        config.module.rules.push({
-            test: /\.(txt|jpg|png|svg)$/,
-            use: [
-                {
-                    loader: 'file-loader',
-                    options: {
-                        context: '',
-                        outputPath: 'static',
-                        publicPath: '_next/static',
-                        name: '[path][name].[hash].[ext]',
-                    },
-                },
-            ],
-        });
-
+    webpack: (config) => {
+        config.resolve.alias['app'] = path.join(__dirname, 'src');
         return config;
-    }
-});
+    },
+};
