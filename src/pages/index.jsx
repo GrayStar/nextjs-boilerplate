@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { cardService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
@@ -20,8 +21,14 @@ const Index = (props) => {
 
     return (
         <Page initialProps={props} title='Index Page'>
-            <h1>Index Page</h1>
-            {getCardList()}
+            <Container>
+                <Row>
+                    <Col>
+                        <h1>Index Page</h1>
+                        {getCardList()}
+                    </Col>
+                </Row>
+            </Container>
         </Page>
     );
 };
@@ -33,6 +40,6 @@ Index.getInitialProps = async () => {
 
         return { cards };
     });
-}
+};
 
 export default Index;

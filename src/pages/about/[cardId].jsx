@@ -1,3 +1,5 @@
+import { Container, Row, Col } from 'react-bootstrap';
+
 import { cardDetailService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
@@ -6,10 +8,16 @@ const About = (props) => {
 
     return (
         <Page initialProps={props} title={`About ${card.name}`}>
-            <h1>About Page</h1>
-            <h2>Name: {card.name}</h2>
-            <h2>Pokemon #: {card.nationalPokedexNumber}</h2>
-            <img src={card.imageUrl} />
+            <Container>
+                <Row>
+                    <Col>
+                        <h1>About Page</h1>
+                        <h2>Name: {card.name}</h2>
+                        <h2>Pokemon #: {card.nationalPokedexNumber}</h2>
+                        <img src={card.imageUrl} />
+                    </Col>
+                </Row>
+            </Container>
         </Page>
     );
 };
@@ -21,6 +29,6 @@ About.getInitialProps = async ({ query }) => {
 
         return { card };
     });
-}
+};
 
 export default About;
