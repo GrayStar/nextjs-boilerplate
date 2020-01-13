@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
+import Head from 'next/head';
 
 import ErrorDisplay from 'app/components/error-display';
 import Header from 'app/components/header';
@@ -40,7 +41,7 @@ export const lifeCycleHelper = (props, componentDidMount, componentWillUnmount) 
     }, []);
 };
 
-const Page = ({ initialProps, children }) => {
+const Page = ({ initialProps, title, children }) => {
     const [currentState, setCurrentState] = useState(initialProps.initialState);
 
     useEffect(() => {
@@ -89,6 +90,9 @@ const Page = ({ initialProps, children }) => {
 
     return (
         <>
+            <Head>
+                <title>{title}</title>
+            </Head>
             <Header />
             {getDisplay()}
             <Footer />
