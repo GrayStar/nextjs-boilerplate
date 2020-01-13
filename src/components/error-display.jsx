@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import { Container, Row, Col } from 'react-bootstrap';
 import { ERRORS } from 'app/http-client';
 
 const isDevelopmentEnvironment = process.env.NODE_ENV === 'development';
@@ -19,11 +20,15 @@ const ErrorDisplay = ({ error }) => {
     }
 
     return (
-        <div>
-            <h1>An Error Occurred</h1>
-            <p>{getErrorMessage()}</p>
-            {getDevError()}
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                    <h1>An Error Occurred</h1>
+                    <p>{getErrorMessage()}</p>
+                    {getDevError()}
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

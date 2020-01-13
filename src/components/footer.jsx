@@ -1,5 +1,6 @@
 import { get } from 'lodash';
 import React, { useEffect, useRef } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
     const $footer = useRef(null);
@@ -22,7 +23,17 @@ const Footer = () => {
         setBodyPadding();
     }
 
-    return <footer ref={$footer}>Footer</footer>
+    return (
+        <footer ref={$footer}>
+            <Container>
+                <Row>
+                    <Col>
+                        Footer
+                    </Col>
+                </Row>
+            </Container>
+        </footer>
+    );
 };
 
 export default Footer;
