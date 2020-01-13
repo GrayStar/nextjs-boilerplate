@@ -33,7 +33,7 @@ const Index = (props) => {
     );
 };
 
-Index.getInitialProps = async () => {
+Index.getInitialProps = () => {
     return getInitialPropsHelper(async () => {
         const indexCardService = cardService();
         const { cards } = await indexCardService.fetch();

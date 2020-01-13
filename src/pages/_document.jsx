@@ -18,7 +18,7 @@ class CustomDocument extends Document {
                     <NextScript />
                 </body>
             </Html>
-        )
+        );
     }
 }
 

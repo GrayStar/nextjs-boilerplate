@@ -22,7 +22,7 @@ const CardDetail = (props) => {
     );
 };
 
-CardDetail.getInitialProps = async ({ query }) => {
+CardDetail.getInitialProps = ({ query }) => {
     return getInitialPropsHelper(async () => {
         const aboutCardDetailService = cardDetailService(query.cardId);
         const { card } = await aboutCardDetailService.fetch();
