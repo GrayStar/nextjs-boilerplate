@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { Container, Row, Col } from 'react-bootstrap';
 
+import { Link } from 'app/routes';
 import { cardService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
@@ -9,7 +9,7 @@ const Index = (props) => {
         const cardListItems = props.cards.map(card => {
             return (
                 <li key={card.id}>
-                    <Link href='/about/[cardId]' as={`/about/${card.id}`}>
+                    <Link route={`/about/${card.id}`}>
                         <a>{card.name}</a>
                     </Link>
                 </li>
