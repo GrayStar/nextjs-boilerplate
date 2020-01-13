@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Head from 'next/head';
+
 import { cardService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
@@ -19,6 +21,9 @@ const Index = (props) => {
 
     return (
         <Page initialProps={props}>
+            <Head>
+                <title>Index Page</title>
+            </Head>
             <h1>Index Page</h1>
             {getCardList()}
         </Page>
