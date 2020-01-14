@@ -20,11 +20,11 @@ const Index = (props) => {
     }
 
     return (
-        <Page initialProps={props} title='Index Page'>
+        <Page initialProps={props} title='Pokemon'>
             <Container>
                 <Row>
                     <Col>
-                        <h1>Index Page</h1>
+                        <h1>Pokemon</h1>
                         {getCardList()}
                     </Col>
                 </Row>
@@ -35,8 +35,7 @@ const Index = (props) => {
 
 Index.getInitialProps = () => {
     return getInitialPropsHelper(async () => {
-        const pokemon = pokemonService();
-        const { results } = await pokemon.fetch();
+        const { results } = await pokemonService().fetch();
 
         return { pokemon: results };
     });
