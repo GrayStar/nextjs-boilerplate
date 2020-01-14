@@ -6,8 +6,8 @@ import { cardService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
 const Title = styled.h1`
-  font-size: 50px;
-  color: #00FF00;
+  color: ${({ theme }) => theme.colors.blue};
+  ${({ theme }) => theme.fonts.xl}
 `;
 
 const Index = (props) => {
