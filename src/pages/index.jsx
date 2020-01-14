@@ -1,14 +1,8 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import styled from 'styled-components';
 
 import { Link } from 'app/routes';
 import { cardService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
-
-const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.blue};
-  ${({ theme }) => theme.fonts.xl}
-`;
 
 const Index = (props) => {
     function getCardList() {
@@ -30,7 +24,7 @@ const Index = (props) => {
             <Container>
                 <Row>
                     <Col>
-                        <Title>Index Page</Title>
+                        <h1>Index Page</h1>
                         {getCardList()}
                     </Col>
                 </Row>
