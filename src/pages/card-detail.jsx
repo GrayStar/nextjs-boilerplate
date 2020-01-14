@@ -21,7 +21,7 @@ const CardDetail = (props) => {
                     <Col>
                         <h1>Card Detail Page</h1>
                         <h2>Name: {card.name}</h2>
-                        <h2>Pokemon #: {card.nationalPokedexNumber}</h2>
+                        {card.nationalPokedexNumber ? <h2>Pokemon #: {card.nationalPokedexNumber}</h2> : null}
                         <CardImageOuter>
                             <img src={card.imageUrl} />
                         </CardImageOuter>
