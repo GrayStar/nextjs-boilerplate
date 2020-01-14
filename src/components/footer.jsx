@@ -1,6 +1,14 @@
 import { get } from 'lodash';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
+
+const FooterOuter = styled.footer`
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+`;
 
 const Footer = () => {
     const $footer = useRef(null);
@@ -24,7 +32,7 @@ const Footer = () => {
     }
 
     return (
-        <footer ref={$footer}>
+        <FooterOuter ref={$footer}>
             <Container>
                 <Row>
                     <Col>
@@ -32,7 +40,7 @@ const Footer = () => {
                     </Col>
                 </Row>
             </Container>
-        </footer>
+        </FooterOuter>
     );
 };
 
