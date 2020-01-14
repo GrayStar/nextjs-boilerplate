@@ -1,8 +1,14 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
+
+const StyledHeader = styled.header`
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.black};
+`;
 
 const Header = () => {
     return (
-        <header>
+        <StyledHeader>
             <Container>
                 <Row>
                     <Col>
@@ -10,7 +16,7 @@ const Header = () => {
                     </Col>
                 </Row>
             </Container>
-        </header>
+        </StyledHeader>
     );
 };
 

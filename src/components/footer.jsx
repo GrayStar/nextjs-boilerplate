@@ -3,11 +3,13 @@ import { useEffect, useRef } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 
-const FooterOuter = styled.footer`
+const StyledFooter = styled.footer`
     left: 0;
     right: 0;
     bottom: 0;
     position: absolute;
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.black};
 `;
 
 const Footer = () => {
@@ -32,7 +34,7 @@ const Footer = () => {
     }
 
     return (
-        <FooterOuter ref={$footer}>
+        <StyledFooter ref={$footer}>
             <Container>
                 <Row>
                     <Col>
@@ -40,7 +42,7 @@ const Footer = () => {
                     </Col>
                 </Row>
             </Container>
-        </FooterOuter>
+        </StyledFooter>
     );
 };
 
