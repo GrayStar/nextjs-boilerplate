@@ -7,16 +7,16 @@ export const httpClient = new HttpClient();
 httpClient.headers = {};
 httpClient.baseUrl = publicRuntimeConfig.rootUrl;
 
-export const cardService = () => {
+export const pokemonService = () => {
     return httpClient.orchestrateRequest({
         method: 'GET',
-        url: '/v1/cards',
+        url: '/pokemon',
     });
 };
 
-export const cardDetailService = (cardId) => {
+export const pokemonDetailService = (pokemonName) => {
     return httpClient.orchestrateRequest({
         method: 'GET',
-        url: `/v1/cards/${cardId}`,
+        url: `/pokemon/${pokemonName}`,
     });
 };

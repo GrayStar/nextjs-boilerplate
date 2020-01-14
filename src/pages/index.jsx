@@ -1,16 +1,16 @@
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { Link } from 'app/routes';
-import { cardService } from 'app/api';
+import { pokemonService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
 const Index = (props) => {
     function getCardList() {
-        const cardListItems = props.cards.map(card => {
+        const cardListItems = props.pokemon.map(p => {
             return (
-                <li key={card.id}>
-                    <Link route={`/about/${card.id}`}>
-                        <a>{card.name}</a>
+                <li key={p.name}>
+                    <Link route={`/about/${p.name}`}>
+                        <a>{p.name}</a>
                     </Link>
                 </li>
             );
@@ -35,10 +35,10 @@ const Index = (props) => {
 
 Index.getInitialProps = () => {
     return getInitialPropsHelper(async () => {
-        const indexCardService = cardService();
-        const { cards } = await indexCardService.fetch();
+        const pokemon = pokemonService();
+        const { results } = await pokemon.fetch();
 
-        return { cards };
+        return { pokemon: results };
     });
 };
 

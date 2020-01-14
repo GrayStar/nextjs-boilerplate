@@ -91,7 +91,7 @@ const Page = ({ initialProps, title, children }) => {
     return (
         <>
             <Head>
-                <title>{title}</title>
+                {title ? <title>{title}</title> : null}
             </Head>
             <Header />
             {getDisplay()}

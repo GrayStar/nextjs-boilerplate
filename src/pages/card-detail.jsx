@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 
-import { cardDetailService } from 'app/api';
+import { pokemonDetailService } from 'app/api';
 import Page, { getInitialPropsHelper } from 'app/layouts/page';
 
 const CardImageOuter = styled.div`
@@ -12,18 +12,18 @@ const CardImageOuter = styled.div`
 `;
 
 const CardDetail = (props) => {
-    const { card } = props;
+    const { pokemon } = props;
 
     return (
-        <Page initialProps={props} title={card.name}>
+        <Page initialProps={props} title={pokemon.name}>
             <Container>
                 <Row>
                     <Col>
                         <h1>Card Detail Page</h1>
-                        <h2>Name: {card.name}</h2>
-                        {card.nationalPokedexNumber ? <h2>Pokemon #: {card.nationalPokedexNumber}</h2> : null}
+                        <h2>Name: {pokemon.name}</h2>
+                        {pokemon.id ? <h2>Pokemon#: {pokemon.id}</h2> : null}
                         <CardImageOuter>
-                            <img src={card.imageUrl} />
+                            <img src={pokemon.sprites.front_default} />
                         </CardImageOuter>
                     </Col>
                 </Row>
@@ -34,10 +34,10 @@ const CardDetail = (props) => {
 
 CardDetail.getInitialProps = ({ query }) => {
     return getInitialPropsHelper(async () => {
-        const aboutCardDetailService = cardDetailService(query.cardId);
-        const { card } = await aboutCardDetailService.fetch();
+        const pokemonDetails = pokemonDetailService(query.pokemonName);
+        const response = await pokemonDetails.fetch();
 
-        return { card };
+        return { pokemon: response };
     });
 };
 
