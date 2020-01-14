@@ -10,7 +10,7 @@ httpClient.baseUrl = publicRuntimeConfig.rootUrl;
 export const pokemonService = () => {
     return httpClient.orchestrateRequest({
         method: 'GET',
-        url: '/pokemon',
+        url: '/pokemon?limit=151',
     });
 };
 

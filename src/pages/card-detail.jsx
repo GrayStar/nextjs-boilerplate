@@ -14,6 +14,16 @@ const CardImageOuter = styled.div`
 const CardDetail = (props) => {
     const { pokemon } = props;
 
+    function getSprites() {
+        return Object.keys(pokemon.sprites).map((key, index) => {
+            return (
+                <CardImageOuter key={index}>
+                    <img src={pokemon.sprites[key]} />
+                </CardImageOuter>
+            );
+        });
+    }
+
     return (
         <Page initialProps={props} title={pokemon.name}>
             <Container>
@@ -22,9 +32,7 @@ const CardDetail = (props) => {
                         <h1>Card Detail Page</h1>
                         <h2>Name: {pokemon.name}</h2>
                         {pokemon.id ? <h2>Pokemon#: {pokemon.id}</h2> : null}
-                        <CardImageOuter>
-                            <img src={pokemon.sprites.front_default} />
-                        </CardImageOuter>
+                        {getSprites()}
                     </Col>
                 </Row>
             </Container>
